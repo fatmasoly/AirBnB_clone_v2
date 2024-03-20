@@ -13,18 +13,16 @@ class State(BaseModel, Base):
     if storage_type == 'db':
         name = Column(String(128), nullable=False)
         cities = relationship('City', backref='state',
-                              cascade='all, delete, delete-orphan')
+                              cascade='all,
+                              delete, delete-orphan')
     else:
         name = ''
 
-        @property
         def cities(self):
             """Getter attribute that returns the list
                 of City instances related to the state.
-
             Returns:
-                list: A list of City instances linked to the state.
-            """
+                list: A list of City instances linked to the state."""
             from models import storage
             match_cities = []
             cities = storage.all(City)
