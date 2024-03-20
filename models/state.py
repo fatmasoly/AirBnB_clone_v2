@@ -18,6 +18,7 @@ class State(BaseModel, Base):
     else:
         name = ''
 
+        @property
         def cities(self):
             """Getter attribute that returns the list
                 of City instances related to the state.
