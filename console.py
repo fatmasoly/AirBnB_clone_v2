@@ -118,7 +118,12 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ Create an object of any class """
+        """Create an instance of a specified class.
+        Args:
+            arg (str): A string containing the class name
+            and optional attributes in the format:
+            <class_name> <attribute1=value1>
+            <attribute2=value2> ... """
         ignored_attrs = ('id', 'created_at', 'updated_at', '__class__')
         class_name = ''
         name_pattern = r'(?P<name>(?:[a-zA-Z]|_)(?:[a-zA-Z]|\d|_)*)'
