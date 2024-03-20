@@ -122,9 +122,8 @@ class HBNBCommand(cmd.Cmd):
         Args:
         arg (str): A string containing the class name
         and optional attributes in the format:
-        <class_name> <attribute1=value1>
-        <attribute2=value2> ..."""
-        ignored_attrs = ('id', 'created_at', 'updated_at', '__class__')
+        <Class name> <param 1> <param 2> <param 3>..."""
+        skip_attrs = ('id', 'created_at', 'updated_at', '__class__')
         class_name = ''
         name_pattern = r'(?P<name>(?:[a-zA-Z]|_)(?:[a-zA-Z]|\d|_)*)'
         class_match = re.match(name_pattern, args)
@@ -140,8 +139,7 @@ class HBNBCommand(cmd.Cmd):
                 name_pattern,
                 str_pattern,
                 float_pattern,
-                int_pattern
-            )
+                int_pattern)
             for param in params:
                 param_match = re.fullmatch(param_pattern, param)
                 if param_match is not None:
@@ -176,7 +174,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             new_instance = HBNBCommand.classes[class_name]()
             for key, value in obj_kwargs.items():
-                if key not in ignored_attrs:
+                if key not in skip_attrs:
                     setattr(new_instance, key, value)
             new_instance.save()
             print(new_instance.id)
