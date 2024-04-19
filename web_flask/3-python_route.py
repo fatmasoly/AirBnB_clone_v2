@@ -23,7 +23,7 @@ def c(text):
     text = text.replace("_", " ")
     return "C {}".format(text)
 
-
+@app_name.route('/python', strict_slashes=False)
 @app_name.route('/python/<text>', strict_slashes=False)
 def python(text='is cool'):
     """Route function for '/python/<text>' endpoint"""
