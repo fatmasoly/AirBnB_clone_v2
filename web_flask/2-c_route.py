@@ -35,8 +35,7 @@ def c_text(text):
     Returns:
         str: A message indicating 'ctext'.
     """
-    text = text.replace("_", " ")
-    return "c {}".format(text)
+    return f"C {escape(text).replace('_', ' ')}"
 
 
 if __name__ == "__main__":
