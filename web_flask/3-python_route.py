@@ -24,7 +24,6 @@ def c(text):
     return "C {}".format(text)
 
 
-@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python(text='is cool'):
     """Route function for '/python/<text>' endpoint"""
