@@ -28,7 +28,7 @@ def hbnb():
 
 
 @app_name.route("/c/<text>", strict_slashes=False)
-def c_text(text):
+def c(text):
     """
     Route function for '/c/<text>' endpoint.
 
