@@ -45,10 +45,15 @@ def page_num(n):
     return render_template('5-number.html', n=escape(n))
 
 
-@app_name.route('/number_odd_or_even/<int:n>', strict_slashes=False)
-def odd_or_even(n):
-    """Route function for '/number_odd_or_even/<n>' endpoint"""
-    return render_template('6-number_odd_or_even.html', n=n)
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def numbersandevenness(n):
+    """display a HTML page only if n is an integer"""
+    if n % 2 == 0:
+        evenness = 'even'
+    else:
+        evenness = 'odd'
+    return render_template('6-number_odd_or_even.html', n=n,
+                           evenness=evenness)
 
 
 if __name__ == "__main__":
