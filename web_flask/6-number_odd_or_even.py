@@ -48,9 +48,8 @@ def page_num(n):
 @app_name.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def odd_or_even(n):
     """Route function for '/number_odd_or_even/<n>' endpoint"""
-    return render_template('6-number_odd_or_even.html', n=int(escape(n)))
+    return render_template('6-number_odd_or_even.html', n=n)
 
 
 if __name__ == "__main__":
     app_name.run(host='0.0.0.0', port=5000)
-
