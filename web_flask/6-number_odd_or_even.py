@@ -47,7 +47,7 @@ def page_num(n):
 
 @app_name.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def odd_or_even(n):
-    """Route function for '/number_odd_or_even/<int:n>' endpoint"""
+    """Route function for '/number_odd_or_even/<n>' endpoint"""
     return render_template('6-number_odd_or_even.html', n=int(escape(n)))
 
 
