@@ -45,7 +45,7 @@ def page_num(n):
     return render_template('5-number.html', n=escape(n))
 
 
-@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+@app_name.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def numbersandevenness(n):
     """display a HTML page only if n is an integer"""
     if n % 2 == 0:
