@@ -7,6 +7,7 @@ from models.amenity import Amenity
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, Table
 from sqlalchemy.orm import relationship
 
+
 place_amenity = Table(
     'place_amenity', Base.metadata,
     Column('place_id', String(60), ForeignKey('places.id'),
