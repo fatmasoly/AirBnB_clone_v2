@@ -2,18 +2,29 @@
 """ths is the first flask app"""
 from flask import Flask, render_template
 from models import storage
-from markupsafe import escape
+
 app = Flask(__name__)
 
 
-@app.route('/states', strict_slashes=False)
-@app.route('/states/<state_id>', strict_slashes=False)
-def states(state_id=None):
+@app.route('/states')
+def states():
+    """display a HTML page: (inside the tag BODY)"""
+    states = storage.all("State", strict_slashes=False)
+    return render_template("9-states.html", states=states)
+
+
+@app.route('/states/<id>')
+def cities_by_states(id):
     """display a HTML page: (inside the tag BODY)"""
     states = storage.all("State")
-    if state_id is not None:
-        state_id = 'State.' + state_id
-    return render_template('9-states.html', states=states, state_id=state_id)
+    state_id = "State." + id
+
+    if state_id in states.keys():
+        return render_template("9-states.html",
+                               state=states[state_id],
+                               id=id)
+
+    return render_template("9-states.html", not_found="not found")
 
 
 @app.teardown_appcontext
