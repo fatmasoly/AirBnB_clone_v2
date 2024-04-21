@@ -3,9 +3,6 @@
 from flask import Flask, render_template
 from models import storage
 from models import *
-from sqlalchemy import text
-
-
 app = Flask(__name__)
 
 
@@ -18,7 +15,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def close_db(err=None):
+def close_db(exception):
     """close db"""
     storage.close()
 
