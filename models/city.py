@@ -22,7 +22,7 @@ class City(BaseModel, Base):
         id = Column(String(60), primary_key=True) # Ensure this line is present
         name = Column(String(128), nullable=False)
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
-        places = relationship('Place', backref='cities',
+        places = relationship('Place', back_populates='city',
                               cascade='all, delete, delete-orphan')
     else:
         id = ''
